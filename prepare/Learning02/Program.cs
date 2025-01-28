@@ -2,25 +2,47 @@ using System;
 
 class Program
 {
+    static void DisplayMenu()
+    {
+        Console.WriteLine("Menu:\n1. Add new job\n2. Display resume\n3. Quit\n");
+    }
     static void Main(string[] args)
     {
-        Job job1 = new Job();
-        job1._company = "Microsoft";
-        job1._jobTitle = "Software Engineer";
-        job1._startYear = 2019;
-        job1._endYear = 2022;
+        Resume theResume = new Resume();
+        string userChoise = "";
+        do{
+            DisplayMenu();
+            Console.Write("Enter choice: ");
+            userChoise = Console.ReadLine();
+            while(userChoise != "1" && userChoise != "2" && userChoise != "3")
+            {
+                Console.Write("Please enter a valid response: ");
+                userChoise = Console.ReadLine();
+            }
 
-        Job job2 = new Job();
-        job2._company = "Apple";
-        job2._jobTitle = "Manager";
-        job2._startYear = 2022;
-        job2._endYear = 2023;
+            if (userChoise == "1")
+            {
+                // Add a new job
+                Job theJob = new Job();
 
-        Resume resume1 = new Resume();
-        resume1._jobs.Add(job1);
-        resume1._jobs.Add(job2);
-        resume1._name = "Helaman Tillotson";
+                Console.Write("what is the name of the commpany? ");
+                theJob._company = Console.ReadLine();
 
-        resume1.DisplayResume();
+                Console.Write("What is the position? ");
+                theJob._jobTitle = Console.ReadLine();
+
+                theJob._startYear = 2015;
+                theJob._endYear = 2025;
+
+                theResume._jobs.Add(theJob);
+
+            }
+
+            else if (userChoise == "2")
+            {
+                // Display the resume
+                theResume.DisplayResume();
+            }
+        }while(userChoise != "3");
     }
 }
