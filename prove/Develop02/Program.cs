@@ -52,7 +52,7 @@ class Program
             //say goodby
             else if(userChoise == "5")
             {
-                Console.WriteLine("Goodby");
+                Console.WriteLine("Goodbye");
             }
         }while(userChoise != "5");
     }

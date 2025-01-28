@@ -1,7 +1,6 @@
 public class Entry
 {
     PromptGenerator prompt1 = new PromptGenerator();
-    DateTime date = DateTime.Today;
     public string _prompt;
     public string _date = DateTime.Today.ToString("d");
     public string _userEntry;
@@ -18,6 +17,7 @@ public class Entry
     {
         Console.Write($"{_prompt}\n> ");
         _userEntry = Console.ReadLine();
+        // fix this so that if the user doesn't enter anything it wont save or will have the user try to enter content again.
     }
 
     // return the formated entry as a string
