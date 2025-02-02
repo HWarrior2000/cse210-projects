@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         string userChoise = "";
-        List<Entry> entries = new List<Entry>();
+        Journal activeJournal = new Journal();
 
         Console.WriteLine("Welcome to the Journal Program!");
         do
@@ -24,29 +24,29 @@ class Program
             if(userChoise == "1")
             {
                 Entry newEntry = new Entry();
-                newEntry.GetAnswer();
-                entries.Add(newEntry);
+                activeJournal.AddEntry(newEntry);
             }
 
             // display the entries
             else if(userChoise == "2")
             {
-                foreach(Entry i in entries)
-                {
-                    Console.WriteLine(i.Display());
-                }
+                activeJournal.DisplayAll();
             }
 
             // load entries from the file 
             else if(userChoise == "3")
             {
-
+                Console.Write("Please enter a file name: ");
+                string fileName = Console.ReadLine() + ".txt";
+                activeJournal.LoadFromFile(fileName);
             }
 
-            // lave entries to a file
+            // save entries to a file
             else if(userChoise == "4")
             {
-
+                Console.Write("Please enter a file name: ");
+                string fileName = Console.ReadLine() + ".txt";
+                activeJournal.SaveToFile(fileName);
             }
 
             //say goodby

@@ -2,27 +2,27 @@ public class Entry
 {
     PromptGenerator prompt1 = new PromptGenerator();
     public string _prompt;
-    public string _date = DateTime.Today.ToString("d");
+    public string _date;
     public string _userEntry;
-
-
-    // Generate prompt after prompt1 is initialized
-    public Entry()
-    {
-        _prompt = prompt1.GeneratePrompt();
-    }
 
     // give user the prompt and get their response
     public void GetAnswer()
     {
+        _date = DateTime.Today.ToString("d");
+        _prompt = prompt1.GeneratePrompt();
         Console.Write($"{_prompt}\n> ");
         _userEntry = Console.ReadLine();
-        // fix this so that if the user doesn't enter anything it wont save or will have the user try to enter content again.
+        // make sure the user enters a response
+        while(_userEntry == "")
+            {
+                Console.Write("Please enter a response:\n>");
+                _userEntry = Console.ReadLine();
+            }
     }
 
     // return the formated entry as a string
-    public string Display()
+    public void Display()
     {
-        return ($"Date: {_date} - Prompt: {_prompt}\n{_userEntry}\n\n");
+        Console.WriteLine($"Date: {_date} - Prompt: {_prompt}\n{_userEntry}\n");
     }
 }
