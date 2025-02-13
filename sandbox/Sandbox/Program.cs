@@ -1,19 +1,18 @@
 using System;
+using System.Threading.Channels;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Person p1 = new Person();
-        p1.Display();
-        p1.SetName("Jerry");
-        p1.SetAge(23);
+        Book b1 = new Book("Jurassic Park", "Michael Crichton");
+        Book b2 = new Book("Tom Sawer", "Mark Twain");
 
-        p1.Display();
+        b1.CheckOut();
 
-        string theName = p1.GetName();
-        int theAge = p1.GetAge();
-
-        Console.WriteLine($"The Persons name was: {theName} - {theAge}");
+        Library theLibrary = new Library();
+        theLibrary.AddBook(b1);
+        theLibrary.AddBook(b2);
+        theLibrary.Dispaly();
     }
 }
