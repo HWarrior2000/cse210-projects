@@ -11,8 +11,6 @@ public class ReflectionActivity : Activity
     {
         Random rnd = new Random();
         ShowIntro();
-        Console.WriteLine("Get ready...");
-        ShowSpinner(2);
 
         // display the random original prompt
         Console.WriteLine($"Consider the following prompt:\n\n --- {_originalPrompts[rnd.Next(_originalPrompts.Count)]} --- \n\nWhen you have something in mind, press enter to continue.");

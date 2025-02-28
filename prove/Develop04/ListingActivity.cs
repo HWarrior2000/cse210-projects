@@ -1,15 +1,28 @@
 public class ListingActivity : Activity
 {
-    List<string> _originalPrompts;
-    List<string> _secondaryPrompts;
+    private List<string> _prompts;
     public ListingActivity() : base("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", "Listing Activity")
     {
-        _originalPrompts = new List<string> {"Think of a time when you stood up for someone else.", "Think of a time when you did something really difficult.", "Think of a time when you helped someone in need.", "Think of a time when you did something truly selfless."};
-        _secondaryPrompts = new List<string> {"Why was this experience meaningful to you?", "Have you ever done anything like this before?", "How did you get started?", "How did you feel when it was complete?", "What made this time different than other times when you were not as successful?", "What is your favorite thing about this experience?", "What could you learn from this experience that applies to other situations?", "What did you learn about yourself through this experience?", "How can you keep this experience in mind in the future?"};
+        _prompts = new List<string> {"Who are people that you appreciate?", "What are personal strengths of yours?", "Who are people that you have helped this week?", "When have you felt the Holy Ghost this month?", "Who are some of your personal heroes?"};
     }
     public void Run()
     {
+        Random rnd = new Random();
         ShowIntro();
+        Console.Write($"Consider the following prompt:\n --- {_prompts[rnd.Next(_prompts.Count)]} --- \nYou may begin in: ");
+        ShowCountdown(5);
+        DateTime futureTime = DateTime.Now.AddSeconds(_time);
+        int total = 0;
+
+        Console.WriteLine();
+        do
+        {
+            Console.Write($"> ");
+            Console.ReadLine();
+            total++;
+        } while (futureTime >= DateTime.Now);
+        Console.WriteLine($"You listed {total} items!");
+
         ShowEnding();
     }
 }

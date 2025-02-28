@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
 public class Activity
@@ -18,6 +19,9 @@ public class Activity
         Console.WriteLine($"Welcome to the {_name}.\n\n{_startingMessage}\n");
         GetTime();
         Console.Clear();
+        Console.WriteLine("Get ready...");
+        ShowSpinner(2);
+        Console.WriteLine();
     }
 
     private void GetTime()
@@ -47,7 +51,7 @@ public class Activity
         Console.Write("\b \b");
     }
 
-    public void ShowSpinner(int seconds)
+    protected void ShowSpinner(int seconds)
     {
         for (int amount = seconds; amount > 0; amount--)
         {
@@ -78,7 +82,7 @@ public class Activity
 
     protected void ShowEnding()
     {
-        Console.WriteLine("\n\nWell done!!");
+        Console.WriteLine("\nWell done!!");
         ShowSpinner(2);
         Console.WriteLine($"\nYou have completed another {_time} seconds of the {_name}.");
         ShowSpinner(2);
